@@ -1,7 +1,20 @@
 import React, { useState, useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
-import { MainButton } from "@twa-dev/sdk/react";
+import {
+  BottomBar,
+  MainButton,
+  SecondaryButton,
+  BackButton,
+} from "@twa-dev/sdk/react";
 
+<BottomBar bgColor="#ff0000">
+  <MainButton text="Continue" onClick={() => alert("continue")} />
+  <SecondaryButton
+    text="Cancel"
+    position="bottom"
+    onClick={() => alert("cancelled")}
+  />
+</BottomBar>;
 type Task = {
   id: number;
   text: string;
@@ -104,7 +117,15 @@ const App: React.FC = () => {
         >
           Show Alert
         </button>
-        <MainButton text="Submit" onClick={() => alert("submitted")} />
+        <BottomBar bgColor="#ff0000">
+          <MainButton text="Continue" onClick={() => alert("continue")} />
+          <SecondaryButton
+            text="Cancel"
+            position="bottom"
+            onClick={() => alert("cancelled")}
+          />
+        </BottomBar>
+        <BackButton onClick={() => window.history.back()} />
       </div>
     </div>
   );
