@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import WebApp from "@twa-dev/sdk";
+import { MainButton } from "@twa-dev/sdk/react";
 
 type Task = {
   id: number;
@@ -48,9 +50,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+        <h1 className="mb-6 text-2xl font-bold text-center text-gray-800">
           To-Do List
         </h1>
         <div className="flex gap-3 mb-6">
@@ -63,7 +65,7 @@ const App: React.FC = () => {
           />
           <button
             onClick={addTask}
-            className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-md"
+            className="px-4 py-2 text-white bg-indigo-500 rounded-lg shadow-md hover:bg-indigo-600"
           >
             Add
           </button>
@@ -86,13 +88,17 @@ const App: React.FC = () => {
               </span>
               <button
                 onClick={() => removeTask(task.id)}
-                className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-lg"
+                className="px-2 py-1 text-white bg-red-500 rounded-lg hover:bg-red-600"
               >
                 Delete
               </button>
             </li>
           ))}
         </ul>
+      </div>
+      <div>
+        <h1>test</h1>
+        <MainButton text="Submit" onClick={() => alert("submitted")} />
       </div>
     </div>
   );
