@@ -97,7 +97,13 @@ const App: React.FC = () => {
         </ul>
       </div>
       <div>
-        <h1>test</h1>
+        <button
+          onClick={() =>
+            WebApp.showAlert(`Hello World! Here is the list ${tasks} `)
+          }
+        >
+          Show Alert
+        </button>
         <MainButton text="Submit" onClick={() => alert("submitted")} />
       </div>
     </div>
