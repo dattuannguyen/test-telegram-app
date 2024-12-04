@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
-
 import {
   BottomBar,
   MainButton,
@@ -17,6 +16,21 @@ type Task = {
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTask, setNewTask] = useState<string>("");
+  const [lastName, setLastName] = useState<string | null>(null);
+
+  useEffect(() => {
+    WebApp.SettingsButton.hide();
+  }, []);
+
+  useEffect(() => {
+    const userData = WebApp.initDataUnsafe?.user;
+
+    if (userData?.last_name) {
+      setLastName(userData.last_name);
+    } else {
+      setLastName("Guest");
+    }
+  }, []);
 
   // Load tasks from localStorage when the app initializes
   useEffect(() => {
@@ -61,7 +75,7 @@ const App: React.FC = () => {
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-100">
       <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
         <h1 className="mb-6 text-2xl font-bold text-center text-gray-800">
-          To-Do List
+          {lastName}'s To-Do List
         </h1>
         <div className="flex gap-3 mb-6">
           <input
@@ -116,7 +130,7 @@ const App: React.FC = () => {
             onClick={() => alert("cancelled")}
           />
         </BottomBar>
-        <BackButton onClick={() => window.history.back()} />
+        <BackButton onClick={() => console.log("test")} />
       </div>
     </div>
   );
