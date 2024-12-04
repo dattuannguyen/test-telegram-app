@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WebApp from "@twa-dev/sdk";
+
 import {
   BottomBar,
   MainButton,
@@ -7,14 +8,6 @@ import {
   BackButton,
 } from "@twa-dev/sdk/react";
 
-<BottomBar bgColor="#ff0000">
-  <MainButton text="Continue" onClick={() => alert("continue")} />
-  <SecondaryButton
-    text="Cancel"
-    position="bottom"
-    onClick={() => alert("cancelled")}
-  />
-</BottomBar>;
 type Task = {
   id: number;
   text: string;
@@ -45,6 +38,8 @@ const App: React.FC = () => {
   }, [tasks]);
 
   const addTask = (): void => {
+    // WebApp.showAlert("test");
+    console.log("test");
     if (newTask.trim() === "") return;
     setTasks([...tasks, { id: Date.now(), text: newTask, completed: false }]);
     setNewTask("");
@@ -109,18 +104,14 @@ const App: React.FC = () => {
           ))}
         </ul>
       </div>
+      <div></div>
       <div>
-        <button
-          onClick={() =>
-            WebApp.showAlert(`Hello World! Here is the list ${tasks} `)
-          }
-        >
-          Show Alert
-        </button>
-        <BottomBar bgColor="#ff0000">
+        {/* <button onClick={() => WebApp.showAlert(`Hello `)}>Show Alert</button> */}
+        <BottomBar bgColor="#ffffff">
           <MainButton text="Continue" onClick={() => alert("continue")} />
           <SecondaryButton
             text="Cancel"
+            // color="'#ff0000"
             position="bottom"
             onClick={() => alert("cancelled")}
           />
